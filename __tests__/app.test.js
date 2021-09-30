@@ -28,31 +28,68 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test('returns animals', async() => {
+    test('returns chessplayers', async() => {
 
       const expectation = [
         {
-          'id': 1,
-          'name': 'bessie',
-          'cool_factor': 3,
-          'owner_id': 1
+          name: 'Magnus Carlsen',
+          rating: 2847,
+          worldchampion: true,
+          country: 'Norway', 
+          id: 1
         },
         {
-          'id': 2,
-          'name': 'jumpy',
-          'cool_factor': 4,
-          'owner_id': 1
+          name: 'Fabiano Caruana',
+          rating: 2820,
+          worldchampion: false,
+          country: 'USA', 
+          id: 2
         },
         {
-          'id': 3,
-          'name': 'spot',
-          'cool_factor': 10,
-          'owner_id': 1
+          name: 'Ding Liren',
+          rating: 2791,
+          worldchampion: false,
+          country: 'China', 
+          id: 3
+        },
+        {
+          name: 'Ian Nepomniatchi',
+          rating: 2789,
+          worldchampion: false,
+          country: 'Russia', 
+          id: 4
+        },
+        {
+          name: 'Levon Aronian',
+          rating: 2781,
+          worldchampion: false,
+          country: 'Armenia', 
+          id: 5
         }
       ];
 
       const data = await fakeRequest(app)
-        .get('/animals')
+        .get('/chessplayers')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+    test('returns chessplayers/:id', async() => {
+
+      const expectation = [
+        {
+          name: 'Magnus Carlsen',
+          rating: 2847,
+          worldchampion: true,
+          country: 'Norway', 
+          id: 1
+        },
+        
+      ];
+
+      const data = await fakeRequest(app)
+        .get('/chessplayers/1')
         .expect('Content-Type', /json/)
         .expect(200);
 
