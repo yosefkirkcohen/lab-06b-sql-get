@@ -31,7 +31,7 @@ async function run() {
                     INSERT INTO chessplayers (name, rating, worldChampion, country)
                     VALUES ($1, $2, $3, $4);
                 `,
-        [player.name, player.rating, player.worldChampion, player.country]);
+        [player.name, player.rating, player.worldchampion, player.country]);
       })
     );
     
