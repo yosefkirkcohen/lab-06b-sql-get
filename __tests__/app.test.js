@@ -95,5 +95,97 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     });
+
+    test('create chessplayer', async() => {
+
+      const newPlayer = 
+        {
+          name: 'Ludwig Hammer',
+          rating: 2747,
+          worldchampion: false,
+          country: 'Norway', 
+          id: expect.any(Number)
+        };
+        
+      const data = await fakeRequest(app)
+        .post('/chessplayers')
+        .send({
+          name: 'Ludwig Hammer',
+          rating: 2747,
+          worldchampion: false,
+          country: 'Norway', 
+          id: 9
+        })
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body[0]).toEqual(newPlayer);
+
+      const allChessplayers = await fakeRequest(app)
+        .get('/chessplayers')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(allChessplayers.body).toEqual(expect.arrayContaining([newPlayer]));
+    });
+
+    test('update chessplayer', async() => {
+
+      const expectedPlayer = 
+        {
+          name: 'Ding Liren',
+          rating: 2747,
+          worldchampion: false,
+          country: 'Norway', 
+          id: 3
+        };
+
+      const data = await fakeRequest(app)
+        .put('/chessplayers/3')
+        .send({
+          name: 'Ding Liren',
+          rating: 2747,
+          worldchampion: false,
+          country: 'Norway'
+        })
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectedPlayer);
+
+      const allChessplayers = await fakeRequest(app)
+        .get('/chessplayers')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(allChessplayers.body).toEqual(expect.arrayContaining([expectedPlayer]));
+    });
+
+    test('delete chessplayer', async() => {
+
+      const expectedDeleted = 
+        {
+          name: 'Ian Nepomniatchi',
+          rating: 2789,
+          worldchampion: false,
+          country: 'Russia', 
+          id: 4
+        };
+
+      const data = await fakeRequest(app)
+        .delete('/chessplayers/4')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectedDeleted);
+
+      const missingEntry = await fakeRequest(app)
+        .get('/chessplayers/4')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(missingEntry.body).toEqual([]);
+    });
+
   });
 });
