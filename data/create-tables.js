@@ -22,7 +22,8 @@ async function run() {
                     name VARCHAR(512) NOT NULL,
                     rating INTEGER NOT NULL,
                     worldChampion BOOLEAN NOT NULL,
-                    country VARCHAR(512)
+                    country VARCHAR(512),
+                    image VARCHAR(512)
             );
         `);
 
