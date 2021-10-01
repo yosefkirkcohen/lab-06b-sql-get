@@ -28,10 +28,10 @@ async function run() {
     await Promise.all(
       chessplayers.map(player => {
         return client.query(`
-                    INSERT INTO chessplayers (name, rating, worldChampion, country)
-                    VALUES ($1, $2, $3, $4);
+                    INSERT INTO chessplayers (name, rating, worldChampion, country, image)
+                    VALUES ($1, $2, $3, $4, $5);
                 `,
-        [player.name, player.rating, player.worldchampion, player.country]);
+        [player.name, player.rating, player.worldchampion, player.country, player.image]);
       })
     );
     
