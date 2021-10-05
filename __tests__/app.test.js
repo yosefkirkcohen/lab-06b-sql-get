@@ -32,6 +32,7 @@ describe('app routes', () => {
 
       const expectation = [
         {
+          category: 'grandmaster',
           name: 'Magnus Carlsen',
           rating: 2847,
           worldchampion: true,
@@ -39,6 +40,7 @@ describe('app routes', () => {
           id: 1
         },
         {
+          category: 'grandmaster',
           name: 'Fabiano Caruana',
           rating: 2820,
           worldchampion: false,
@@ -46,6 +48,7 @@ describe('app routes', () => {
           id: 2
         },
         {
+          category: 'grandmaster',
           name: 'Ding Liren',
           rating: 2791,
           worldchampion: false,
@@ -53,6 +56,7 @@ describe('app routes', () => {
           id: 3
         },
         {
+          category: 'grandmaster',
           name: 'Ian Nepomniatchi',
           rating: 2789,
           worldchampion: false,
@@ -60,6 +64,7 @@ describe('app routes', () => {
           id: 4
         },
         {
+          category: 'grandmaster',
           name: 'Levon Aronian',
           rating: 2781,
           worldchampion: false,
@@ -73,7 +78,7 @@ describe('app routes', () => {
         .expect('Content-Type', /json/)
         .expect(200);
 
-      expect(data.body).toEqual(expectation);
+      expect(data.body).toEqual(expectation.reverse());
     });
     test('returns chessplayers/:id', async() => {
 
