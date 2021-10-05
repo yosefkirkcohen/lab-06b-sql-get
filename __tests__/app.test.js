@@ -84,12 +84,15 @@ describe('app routes', () => {
 
       const expectation = [
         {
-          name: 'Magnus Carlsen',
-          rating: 2847,
-          worldchampion: true,
-          country: 'Norway', 
-          id: 1
-        },
+          'id': 1,
+          'name': 'Magnus Carlsen',
+          'rating': 2847,
+          'worldchampion': true,
+          'country': 'Norway',
+          'image': 'magnus.jpeg',
+          'category_id': 1,
+          'category': 'grandmaster'
+        }
         
       ];
 
@@ -138,7 +141,9 @@ describe('app routes', () => {
 
       const expectedPlayer = 
         {
+          category_id: 1,
           name: 'Ding Liren',
+          image: 'ding.jpeg',
           rating: 2747,
           worldchampion: false,
           country: 'Norway', 
