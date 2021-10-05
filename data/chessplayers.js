@@ -4,39 +4,39 @@ module.exports = [
     rating: 2847,
     worldchampion: true,
     country: 'Norway', 
-    id: 1,
-    image: 'magnus.jpeg'
+    image: 'magnus.jpeg',
+    category_id: 1
   },
   {
     name: 'Fabiano Caruana',
     rating: 2820,
     worldchampion: false,
     country: 'USA', 
-    id: 2,
-    image: 'fabiano.jpeg'
+    image: 'fabiano.jpeg',
+    category_id: 1
   },
   {
     name: 'Ding Liren',
     rating: 2791,
     worldchampion: false,
     country: 'China', 
-    id: 3,
-    image: 'ding.jpeg'
+    image: 'ding.jpeg',
+    category_id: 1
   },
   {
     name: 'Ian Nepomniatchi',
     rating: 2789,
     worldchampion: false,
     country: 'Russia', 
-    id: 4,
-    image: 'ian.jpeg'
+    image: 'ian.jpeg',
+    category_id: 1
   },
   {
     name: 'Levon Aronian',
     rating: 2781,
     worldchampion: false,
     country: 'Armenia', 
-    id: 5,
-    image: 'levon.jpeg'
+    image: 'levon.jpeg',
+    category_id: 1
   }
 ];

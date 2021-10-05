@@ -17,13 +17,19 @@ async function run() {
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
                 );           
+                CREATE TABLE categories (
+                  id SERIAL PRIMARY KEY,
+                  category VARCHAR(512) NOT NULL
+                );
+
                 CREATE TABLE chessplayers (
                     id SERIAL PRIMARY KEY NOT NULL,
                     name VARCHAR(512) NOT NULL,
                     rating INTEGER NOT NULL,
                     worldChampion BOOLEAN NOT NULL,
                     country VARCHAR(512),
-                    image VARCHAR(512)
+                    image VARCHAR(512),
+                    category_id INTEGER NOT NULL REFERENCES categories(id)
             );
         `);
 
